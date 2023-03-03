@@ -1,0 +1,31 @@
+﻿@model IEnumerable<LeaseManagement.Models.OwnerDto>
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create House</h2>
+
+<a href="/House/List">Go back to list</a>
+
+<form action="/House/Create" method="POST">
+    <div>
+        <label>House Name:</label> <input type="text" name="HouseName" />
+    </div>
+    <div>
+        <label>House Description:</label> <input type="text" name="HouseDescription" />
+    </div>
+    <div>
+        <label>Owners:</label>
+        <select name="OwnerId">
+            @foreach (var owners in Model)
+            {
+                <option value="@owners.OwnerId">@owners.OwnerName</option>
+
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Add House" />
+
+    </div>
+</form>

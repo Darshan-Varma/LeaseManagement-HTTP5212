@@ -1,0 +1,16 @@
+﻿@model IEnumerable<LeaseManagement.Models.HouseDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<div><a href="/House/New">New House</a></div>
+
+@foreach (var house in Model)
+{
+    <h2><a href="/House/Details/@house.HouseId">@house.HouseName</a></h2>
+    <div>House Description: @house.HouseDescription</div>
+    <div>Owner Name: @house.OwnerName</div>
+
+
+}

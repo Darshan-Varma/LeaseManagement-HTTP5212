@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<a href="/Tenant/List">Go back to list</a>
+<h2>Add tenant</h2>
+<form action="/Tenant/Create" method="POST">
+    <div>
+        <label>Tenant Name:</label> <input type="text" name="TenantName" />
+    </div>
+    <div>
+        <label>Tenant Description:</label> <input type="text" name="TenantDescription" />
+    </div>
+    <div>
+        <input type="submit" value="Add Tenant" />
+
+    </div>
+</form>

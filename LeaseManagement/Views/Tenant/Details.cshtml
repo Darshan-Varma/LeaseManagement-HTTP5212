@@ -1,0 +1,30 @@
+﻿@model LeaseManagement.Models.ViewModels.TenantDetails
+
+
+@{
+    ViewBag.Title = "View";
+}
+<h2>@Model.Tenant.TenantName, @Model.Tenant.TenantDescription</h2>
+<nav>
+    <ul>
+        <li><a href="/Tenant/List">Go back to list</a></li>
+        <li><a href="/Tenant/Edit/@Model.Tenant.TenantId">Update</a></li>
+        <li><a style="color:#ab2020;" href="/Tenant/DeleteConfirm/@Model.Tenant.TenantId">Delete</a></li>
+    </ul>
+</nav>
+<div class="row">
+    <div>
+       <div>Tenant Name: @Model.Tenant.TenantName</div>
+       <div>Tenant Description: @Model.Tenant.TenantDescription</div>
+    </div>
+
+
+    <div>
+        <h4>Leased Houses:</h4>
+        @foreach (var house in Model.LeasedHouses)
+        {
+            <a href="/house/Details/@house.HouseId">@house.HouseName</a><br />
+
+        }
+    </div>
+</div>

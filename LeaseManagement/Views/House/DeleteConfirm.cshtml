@@ -1,0 +1,19 @@
+﻿@model LeaseManagement.Models.HouseDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this House?</h2>
+<nav>
+    <ul>
+        <li><a href="/House/List">Cancel</a></li>
+        <li><a href="/House/Edit/@Model.HouseId">Update</a></li>
+    </ul>
+</nav>
+<h3>@Model.HouseName</h3>
+<div>Description: @Model.HouseDescription kg</div>
+<div>Owner Name: @Model.OwnerName</div>
+<form action="/House/Delete/@Model.HouseId" method="POST">
+    <input type="submit" value="Confirm Delete" />
+</form>

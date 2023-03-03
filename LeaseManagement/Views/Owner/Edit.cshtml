@@ -1,0 +1,27 @@
+﻿@model LeaseManagement.Models.OwnerDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+<li><a href="/Owner/List">Go back to list</a></li>
+<li><a style="color:#ab2020;" href="/Owner/DeleteConfirm/@Model.OwnerId">Delete</a></li>
+
+
+<h2>Update Owner</h2>
+<form action="/Owner/Update/@Model.OwnerId" method="POST">
+    <div style="display:none;">
+        <input type="text" name="OwnerId" value="@Model.OwnerId" />
+    </div>
+    <div>
+        <label>Owner Name:</label> <input type="text" name="OwnerName" value="@Model.OwnerName" />
+    </div>
+    <div>
+        <div>
+            <label>Owner Description:</label> <input type="text" name="OwnerDescription" value="@Model.OwnerDescription" />
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Update Owner" />
+
+    </div>
+</form>

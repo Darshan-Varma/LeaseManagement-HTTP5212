@@ -1,0 +1,26 @@
+﻿@model LeaseManagement.Models.TenantDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+<li><a href="/Tenant/List">Go back to list</a></li>
+<li><a style="color:#ab2020;" href="/Tenant/DeleteConfirm/@Model.TenantId">Delete</a></li>
+
+
+<h2>Update Tenant</h2>
+<form action="/Tenant/Update/@Model.TenantId" method="POST">
+    <div style="display:none;">
+        <input type="text" name="TenantId" value="@Model.TenantId" />
+    </div>
+    <div>
+        <label>Tenant Name:</label> <input type="text" name="TenantName" value="@Model.TenantName" />
+    </div>
+    <div>
+        <label>Tenant Description:</label> <input type="text" name="TenantDescription" value="@Model.TenantDescription" />
+    </div>
+
+    <div>
+        <input type="submit" value="Update Tenant" />
+
+    </div>
+</form>

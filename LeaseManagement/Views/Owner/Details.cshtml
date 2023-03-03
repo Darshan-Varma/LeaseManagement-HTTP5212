@@ -1,0 +1,33 @@
+﻿@model LeaseManagement.Models.ViewModels.OwnerDetails
+
+<a href="/Owner/List">Go back to list</a>
+<li><a href="/Owner/Edit/@Model.Owner.OwnerId">Update</a></li>
+<li><a style="color:#ab2020;" href="/Owner/DeleteConfirm/@Model.Owner.OwnerId">Delete</a></li>
+
+@{
+    ViewBag.Title = "View";
+}
+<h2>Owner @Model.Owner.OwnerName</h2>
+
+
+
+
+<div class="row">
+    <div>
+
+        <div>Owner Description: @Model.Owner.OwnerDescription</div>
+    </div>
+    <div>
+        <h3>Houses related to @(Model.Owner.OwnerName)</h3>
+        <ul>
+
+            @foreach (var house in Model.RelatedHouses)
+            {
+                <li>
+                    <a href="/House/Details/@house.HouseId">@house.HouseName</a>
+                </li>
+            }
+
+        </ul>
+    </div>
+</div>

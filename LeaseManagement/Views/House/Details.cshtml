@@ -1,0 +1,40 @@
+﻿@model LeaseManagement.Models.ViewModels.HouseDetails
+@{
+    ViewBag.Title = "List";
+}
+<nav>
+    <ul>
+        <a href="/House/List">Go back to list</a>
+        <li><a href="/House/Edit/@Model.House.HouseId">Update</a></li>
+        <li><a style="color:#ab2020;" href="/House/DeleteConfirm/@Model.House.HouseId">Delete</a></li>
+    </ul>
+</nav>
+
+<h2>@Model.House.HouseName</h2>
+
+<div>House Description: @Model.House.HouseDescription</div>
+
+<div>Owner Name: @Model.House.OwnerName</div>
+
+<div>
+    <h4>Tenants for @Model.House.HouseName:</h4>
+    @foreach (var tenant in Model.Tenant)
+    {
+
+        <a href="/Tenant/Details/@tenant.TenantId">@tenant.TenantName, @tenant.TenantDescription</a> <a style="color:#ab2020;" href="/House/Unassociate/@Model.House.HouseId?TenantId=@tenant.TenantId">[x]</a><br />
+    }
+</div>
+<div>
+
+    <form method="POST" action="/House/Associate/@Model.House.HouseId">
+        <select name="TenantId">
+            <option value="">Select Tenant</option>
+            @foreach (var Tenant in Model.OtherTenants)
+            {
+                <option value="@Tenant.TenantId">@Tenant.TenantName, @Tenant.TenantDescription</option>
+            }
+
+        </select>
+        <input type="submit" value="Add Tenant" />
+    </form>
+</div>

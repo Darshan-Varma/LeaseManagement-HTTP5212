@@ -1,0 +1,46 @@
+﻿@model LeaseManagement.Models.ViewModels.UpdateHouse
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update House</h2>
+<nav>
+    <ul>
+        <li><a href="/House/List">Go back to list</a></li>
+
+        <li><a style="color:#ab2020;" href="/House/DeleteConfirm/@Model.House.HouseId">Delete</a></li>
+    </ul>
+</nav>
+<form action="/House/Update/@Model.House.HouseId" method="POST" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div style="display:none;">
+                @* Pass through the House ID *@
+                <input type="text" name="HouseId" value="@Model.House.HouseId" />
+            </div>
+            <div>
+                <label>Name:</label> <input type="text" name="HouseName" value="@Model.House.HouseName" />
+            </div>
+            <div>
+                <label>Description :</label> <input type="text" name="HouseDescription" value="@Model.House.HouseDescription" />
+            </div>
+            <div>
+                <label>Owner:</label> 
+                <select name="OwnerId">
+                    @foreach (var owners in Model.Owner)
+                    {
+                        <option value="@owners.OwnerId">@owners.OwnerName</option>
+
+                    }
+                </select>
+            </div>
+        </div>
+        
+    </div>
+    <div>
+        <input type="submit" value="Update House" />
+
+    </div>
+
+</form>

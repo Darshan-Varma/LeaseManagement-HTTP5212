@@ -1,0 +1,11 @@
+﻿@model IEnumerable<LeaseManagement.Models.TenantDto>
+@{
+    ViewBag.Title = "List of Tenants";
+}
+
+<h2>List of Tenants</h2>
+<a href="/Tenant/New">New Tenant</a>
+@foreach (var Tenant in Model)
+{
+    <h3><a href="/Tenant/Details/@Tenant.TenantId">@Tenant.TenantName, @Tenant.TenantDescription</a></h3>
+}
